@@ -4,7 +4,7 @@ function perimetro (lado1,lado2,lado3){
 
 function validador(valor){
   console.log(!isNaN(valor))
-  return !isNaN(valor)
+  return !isNaN(valor) && valor >= 0
 }
 
 function tipoDeTriangulo(lado1, lado2, lado3){
@@ -33,10 +33,5 @@ for (i = 0; i < 3; i++){
 }
 
 console.log("O perímetro vale "+perimetro(lado[0],lado[1],lado[2]))
-console.log("O triangulo é "+tipoDeTriangulo(lado[0],lado[1],lado[2]))
+console.log("Você criou um Triangulo "+tipoDeTriangulo(lado[0],lado[1],lado[2]))
 
-
-
-// let lado1=validador(+prompt("Digite a medida do primeiro lado:","medida do primeiro lado"))
-// let lado2=validador(+prompt("Digite a medida do segundo lado:","medida do segundo lado"))
-// let lado3=validador(+prompt("Digite a medida do terceiro lado:","medida do terceiro lado"))
