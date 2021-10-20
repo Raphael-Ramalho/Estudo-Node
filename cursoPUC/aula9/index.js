@@ -1,10 +1,6 @@
 
 function validacao(valor) {
-    if(!Number.isInteger(valor)){ 
-        return undefined 
-    } else if (valor > 9) {
-        return undefined 
-    } else if(valor < -9) { 
+    if(isNaN(valor)){ 
         return undefined 
     }
     return valor
@@ -20,16 +16,16 @@ function escreverPorExtenso(){
     let valor
     let numero
     do {
-        valor=+prompt('Digite um número inteiro de -9 a 9:' , '0')
+        valor=+prompt('Type a number between -9 and 9:' , '0')
         numero = validacao(valor)
         if(numero === undefined) {
-            alert("Numero inválido. Tente novamente!")
+            alert("invalid Number. Try again!")
         }
     } while (numero === undefined)
 
-    const numerosEmExtenso = ['ZERO', 'UM', 'DOIS', 'TRÊS', 'QUATRO', 'CINCO', 'SEIS', 'SETE', 'OITO', 'NOVE']
+    const numerosEmExtenso = ['ZERO', 'ONE', 'TWO', 'TREE', 'FOUR', 'FIVE', 'SIX', 'SEVEN', 'EIGHT', 'NINE']
 
-    // const num10_19 = ['DEZ', 'ONZE', 'DOZE', 'TREZE', 'QUATORZE', 'QUINZE', 'DEZESSEIS', 'DEZESSETE', 'DEZOITO', 'DEZENOVE']
+    // const num10_19 = ['DEZ', 'ONZE', 'DOZE', 'TREZE', 'QUATORZE', 'QUINZE', 'DEZESSEIS', 'DEZESSETE', 'DEZOITO', 'DEZENOVE']     
 
     // const num20 = ['VINTE', 'TRINTA', 'QUARENTA', 'CINQUENTA', 'SESSENTA', 'OITENTA', 'NOVENTA', ]
 
