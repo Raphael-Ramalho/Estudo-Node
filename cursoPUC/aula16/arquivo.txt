@@ -1,0 +1,20 @@
+<html>
+ <body>
+  <p>
+   "Só se vê bem com o coração.
+     O essencial é invisível aos olhos."
+  </p>
+  <p>
+   Essa é uma das frases do pequeno príncipe que
+   se tornou mais marcante.
+  </p>
+  <p>
+   É preciso enxergar além das aparências para que
+   se veja aquilo que realmente importa.
+  </p>
+  <p>
+   Seja para conhecer verdadeiramente alguém ou
+   até para conhecer a si mesmo.
+  </p>
+ </body>
+</html>

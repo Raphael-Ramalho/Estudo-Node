@@ -1,5 +1,5 @@
 var http = require('http');
-var fs   = require('fs');
+var fs   = require('fs'); // o modulo fs serve para abrir arquivos
 
 http.createServer (function (req,res)
 {
