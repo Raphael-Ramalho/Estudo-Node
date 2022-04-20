@@ -1,3 +1,4 @@
 const fs = require('fs')
 
-fs.readFileSync()
+const text = fs.readFileSync('./txt/input.txt', 'utf-8')
+console.log('text: ', text)
