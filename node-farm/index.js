@@ -55,21 +55,34 @@ const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8")
 const dataObj = JSON.parse(data)
 
 const server = http.createServer((req, res) => {
-  const pathName = req.url
+
+
+  const {query, pathname} = url.parse(req.url)
 
   //Overview page
-  if (pathName === "/overview") {
+  if (pathname === "/" || pathname === "/overview") {
     res.writeHead(200, {"Content-type": "text/html"})
 
     const cardsHtml = dataObj.map(el => replaceTemplate(tempCard, el)).join('')
     const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardsHtml)
 
     res.end(output)
-  } else if (pathName === "/product") {
-    res.end("This is the PRODUCT")
-  } else if (pathName === "/api") {
+
+  //Product page
+  } else if (pathname === "/product") {
+    res.writeHead(200, {"Content-type": "text/html"})
+    const product = dataObj[query.split("=")[1]]
+    console.log("query", query)
+    const output = replaceTemplate(tempProduct, product)
+    res.end(output)
+    res.end("")
+
+  //Api
+  } else if (pathname === "/api") {
     res.writeHead(200, { "Content-type": "application/json" }) //this line will inform that the response has a json format
     res.end(data)
+
+  //Not found page
   } else {
     res.writeHead(404, {
       "Content-type": "text/html",
