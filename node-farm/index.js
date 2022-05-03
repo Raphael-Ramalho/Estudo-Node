@@ -1,7 +1,7 @@
 const fs = require("fs")
 const http = require("http")
 const url = require("url")
-require('./modules/replaceTemplateupdate')
+const replaceTemplate = require('./modules/replaceTemplate')
 
 ///////////////////////////////////////
 /// FILES
@@ -76,5 +76,5 @@ const server = http.createServer((req, res) => {
 })
 
 server.listen(8000, "127.0.0.2", () => {
-  console.log("Listening to requests on port 8000")
+  console.log("Listening to requests on 127.0.0.2:8000")
 })
