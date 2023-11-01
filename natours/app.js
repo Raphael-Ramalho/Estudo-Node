@@ -28,7 +28,13 @@ app.get('/api/v1/tours', (req, res) => {
 });
 
 app.post('/api/v1/tours', (req, res) => {
-  
+  res.status(200).json({
+    status: 'success',
+    results: tours.length,
+    data:{
+      tours
+    }
+  })
 })
 
 const port = 3000;
