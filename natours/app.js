@@ -22,12 +22,13 @@ app.get('/api/v1/tours', (req, res) => {
     status: 'success',
     result: tours.length,
     data: {
-      tours: tours,
+      // tours: tours,
+      tours: 'ola'
     },
   });
 });
 
-app.post('/api/v1/tours', (req, res) => {
+app.post('/api/v1/tours/:id', (req, res) => {
   res.status(200).json({
     status: 'success',
     results: tours.length,
