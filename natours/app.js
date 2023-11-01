@@ -3,7 +3,7 @@ const express = require('express');
 
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 // app.get('/', (req, res) => {
 //   res.status(200).json({message:'Hello from the server side!', app:"Natours"})
@@ -27,12 +27,17 @@ app.get('/api/v1/tours', (req, res) => {
   });
 });
 
-app.get('/api/v1/tours/:id/:x/:y', (req, res) => {
-  console.log(req.params)
+app.get('/api/v1/tours/:id', (req, res) => {
+  console.log(req.params);
+
+  const id = Number(req.params.id);
+  const tour = tours.find((el) => el.id === id);
+
   res.status(200).json({
     status: 'success',
+    data: { tour },
   });
-})
+});
 
 const port = 3000;
 app.listen(port, () => {
