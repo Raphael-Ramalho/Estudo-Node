@@ -1,23 +1,29 @@
 const fs = require('fs');
 const express = require('express');
+const morgan = require('morgan');
 
 const app = express();
 
+// Middlewares
+
 app.use(express.json());
+app.use(morgan('dev'));
 
-app.use((req, res, next)=>{
-  console.log('hello from the middleware')
-  next()
-})
+app.use((req, res, next) => {
+  console.log('hello from the middleware');
+  next();
+});
 
-app.use((req, res, next)=>{
-  req.requestTime = new Date().toISOString()
-  next()
-})
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  next();
+});
 
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
 );
+
+// Route handlers
 
 const getTours = (req, res) => {
   res.status(200).json({
@@ -67,9 +73,13 @@ const postTours = (req, res) => {
   );
 };
 
+// Routes
+
 app.route('/api/v1/tours').get(getTours).post(postTours);
 
 app.get('/api/v1/tours/:id', getTour);
+
+// Start Server
 
 const port = 3000;
 app.listen(port, () => {
