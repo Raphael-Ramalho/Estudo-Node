@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
 
+
 app.use((req, res, next) => {
   console.log('hello from the middleware');
   next();
@@ -73,11 +74,52 @@ const postTours = (req, res) => {
   );
 };
 
+const getAllUsers = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'Route not implemented...',
+  });
+};
+
+const getUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'Route not implemented...',
+  });
+};
+
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'Route not implemented...',
+  });
+};
+
+const updateUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'Route not implemented...',
+  });
+};
+
+const deleteUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'Route not implemented...',
+  });
+};
+
 // Routes
+const tourRouter = express.Router();
+const userRouter = express.Router();
+app.use('/api/v1/tours', tourRouter);
+app.use('/api/v1/users', userRouter);
 
-app.route('/api/v1/tours').get(getTours).post(postTours);
+tourRouter.route('/').get(getTours).post(postTours);
+tourRouter.route('/:id').get(getTour);
 
-app.get('/api/v1/tours/:id', getTour);
+userRouter.route('/').get(getAllUsers).post(createUser);
+userRouter.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 
 // Start Server
 
