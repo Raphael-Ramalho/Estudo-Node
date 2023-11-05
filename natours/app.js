@@ -1,4 +1,3 @@
-const fs = require('fs');
 const express = require('express');
 const morgan = require('morgan');
 
@@ -22,7 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Routes
+// MOUT Routes
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
