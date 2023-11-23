@@ -7,9 +7,6 @@ const tours = JSON.parse(
 // Route handlers
 
 exports.checkId = (req, res, next, val)=>{
-  console.log(`Tour id is: ${val}`)
-  console.log(`Tour id is: ${val}`)
-
   if(Number(val) > tours.length) {
     return res.status(404).json({
       status: 'fail',
@@ -31,8 +28,6 @@ exports.getTours = (req, res) => {
 };
 
 exports.getTour = (req, res) => {
-  console.log(req.params);
-
   const id = Number(req.params.id);
   const tour = tours.find((el) => el.id === id);
 

@@ -4,7 +4,20 @@ const router = express.Router();
 
 router.param('id', tourController.checkId);
 
-router.route('/').get(tourController.getTours).post(tourController.postTours);
+const middleware = (req, res, next) => {
+  console.log('req:', req.body)
+  const hasName = req.body.name
+  const hasPrice = req.body.price
+  if(!hasName || !hasPrice) {
+    res.status(400).json({
+      status: 'error',
+      message: 'Bad request'
+    })
+  }
+  next()
+}
+
+router.route('/').get(tourController.getTours).post(middleware, tourController.postTours);
 router.route('/:id').get(tourController.getTour);
 
 module.exports = router;
