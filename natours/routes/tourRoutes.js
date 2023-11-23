@@ -5,7 +5,6 @@ const router = express.Router();
 router.param('id', tourController.checkId);
 
 const middleware = (req, res, next) => {
-  console.log('req:', req.body)
   const hasName = req.body.name
   const hasPrice = req.body.price
   if(!hasName || !hasPrice) {
@@ -13,6 +12,7 @@ const middleware = (req, res, next) => {
       status: 'error',
       message: 'Bad request'
     })
+    return
   }
   next()
 }
