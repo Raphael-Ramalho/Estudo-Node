@@ -10,7 +10,7 @@ const middleware = (req, res, next) => {
   if(!hasName || !hasPrice) {
     res.status(400).json({
       status: 'error',
-      message: 'Bad request'
+      message: 'Bad Request'
     })
     return
   }
