@@ -6,15 +6,27 @@ const tours = JSON.parse(
 
 // Route handlers
 
-exports.checkId = (req, res, next, val)=>{
-  if(Number(val) > tours.length) {
+exports.checkId = (req, res, next, val) => {
+  if (Number(val) > tours.length) {
     return res.status(404).json({
       status: 'fail',
-      message: 'Invalid ID'
-    })
+      message: 'Invalid ID',
+    });
   }
-  next()
-}
+  next();
+};
+
+exports.checkBody = (req, res, next) => {
+  const hasName = req.body.name;
+  const hasPrice = req.body.price;
+  if (!hasName || !hasPrice) {
+    return res.status(400).json({
+      status: 'error',
+      message: 'Missing name or price',
+    });
+  }
+  next();
+};
 
 exports.getTours = (req, res) => {
   res.status(200).json({
