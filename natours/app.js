@@ -17,6 +17,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(`${__dirname}/public`));
 
 app.use((req, res, next) => {
+  // eslint-disable-next-line no-console
   console.log('hello from the middleware');
   next();
 });

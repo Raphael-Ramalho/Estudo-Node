@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
+  fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`),
 );
 
 // Route handlers
@@ -63,6 +63,6 @@ exports.postTours = (req, res) => {
         status: 'success',
         data: { tour: newTour },
       });
-    }
+    },
   );
 };
