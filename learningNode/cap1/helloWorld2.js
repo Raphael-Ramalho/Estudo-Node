@@ -16,4 +16,5 @@ http
   .listen(8124, function () {
     console.log("bound to port 8124");
   });
-console.log("Server running on 8124/");
+
+console.log("Server running on 8124");
