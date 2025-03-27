@@ -5,12 +5,13 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "express": "4.21.2"
+    "express": "4.21.2",
+    "mysql2": "3.14.0"
   },
   "devDependencies": {
     "nodemon": "3.1.9"
   },
-  "scripts":{
+  "scripts": {
     "start": "nodemon app.js"
   }
 }
