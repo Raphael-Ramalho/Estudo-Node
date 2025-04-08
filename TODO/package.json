@@ -5,13 +5,17 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "dotenv": "16.4.7",
     "express": "4.21.2",
-    "mysql2": "3.14.0"
+    "mysql2": "3.14.0",
+    "sequelize": "6.37.7",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "nodemon": "3.1.9"
   },
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "create:db": "node src/infra/db/create.js"
   }
 }
