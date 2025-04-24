@@ -1,4 +1,5 @@
-import winston, { createLogger, format, transports } from "winston";
+import { createLogger, format, transports } from "winston";
+import winston = require("winston");
 
 export const logger = createLogger({
   level: "info",
