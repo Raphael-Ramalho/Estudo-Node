@@ -1,22 +1,25 @@
 import express from "express";
-import Activity from "../../../models/Activity.js";
+import ActivitiesModel from "../../../models/Activities.js";
+import sequelize from "../../infra/sequelize/config.js";
 
 const activitiesRouter = express.Router();
 
+const Activities = ActivitiesModel(sequelize);
+
 activitiesRouter.get("/", async (_, res) => {
-  const activities = await Activity.findAll();
+  const activities = await Activities().findAll();
   res.json(activities);
 });
 
 activitiesRouter.post("/", async (req, res) => {
   const { name, date, isCompleted } = req.body;
-  const newActivity = await Activity.create({ name, date, isCompleted });
+  const newActivity = await Activities.create({ name, date, isCompleted });
   res.json(newActivity);
 });
 
 activitiesRouter.patch("/:id", async (req, res) => {
   const { name, date, isCompleted } = req.body;
-  const newActivity = await Activity.findByPk(req.params.id);
+  const newActivity = await Activities.findByPk(req.params.id);
   if (newActivity) {
     if (name) newActivity.name = name;
     if (date) newActivity.date = date;
@@ -31,7 +34,7 @@ activitiesRouter.patch("/:id", async (req, res) => {
 });
 
 activitiesRouter.delete("/:id", async (req, res) => {
-  const newActivity = await Activity.findByPk(req.params.id);
+  const newActivity = await Activities.findByPk(req.params.id);
   if (newActivity) {
     await newActivity.destroy();
 
